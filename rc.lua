@@ -11,6 +11,7 @@ local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
 
 local gears         = require("gears")
+
 local awful         = require("awful")
                       require("awful.autofocus")
 local wibox         = require("wibox")
@@ -226,8 +227,8 @@ globalkeys = awful.util.table.join(
     awful.key({}, "F1", function () quake_console:toggle() end),
     -- Take a screenshot
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-    awful.key({ altkey }, "p", function() os.execute("screenshot") end),
-
+    awful.key({ "Shift" }, "Print", function() awful.util.spawn_with_shell("sleep 0.5 && scrot -s ~/foo.png &&  xclip -selection clipboard -t image/png < foo.png && rm ~/foo.png") end),
+    awful.key({  }, "Print", function() awful.util.spawn_with_shell("scrot") end),
     -- Hotkeys
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
