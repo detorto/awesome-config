@@ -112,11 +112,13 @@ function QuakeConsole:show(client)
     client.sticky = true
 
     -- This is not a normal window, don't apply any specific keyboard stuff
-    client:buttons({})
+    -- should not do this, becouse focuse on mouse defined in buttons
+    --client:buttons({})
     client:keys({})
 
     client.hidden = false
     client:raise()
+    
     capi.client.focus = client
 
     self.visible = true

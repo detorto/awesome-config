@@ -378,28 +378,28 @@ globalkeys = awful.util.table.join(
     -- ALSA volume control
     awful.key({ altkey }, "Up",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+            os.execute(string.format("amixer -D pulse sset %s 1%%+", beautiful.volume.channel))
             beautiful.volume.update()
         
         end),
     awful.key({ altkey }, "Down",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+            os.execute(string.format("amixer -D pulse sset %s 1%%-", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ altkey }, "m",
         function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+            os.execute(string.format("amixer -D pulse sset %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ altkey, "Control" }, "m",
         function ()
-            os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
+            os.execute(string.format("amixer -D pulse sset %s 100%%", beautiful.volume.channel))
             beautiful.volume.update()
         end),
     awful.key({ altkey, "Control" }, "0",
         function ()
-            os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
+            os.execute(string.format("amixer -D pulse sset 0%%", beautiful.volume.channel))
             beautiful.volume.update()
         end),
 
