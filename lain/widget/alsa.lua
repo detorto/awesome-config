@@ -22,8 +22,8 @@ local function factory(args)
     local timeout  = args.timeout or 5
     local settings = args.settings or function() end
 
-    alsa.cmd           = args.cmd or "amixer"
-    alsa.channel       = args.channel or "PCM"
+    alsa.cmd           = args.cmd or "amixer -D pulse"
+    alsa.channel       = args.channel or "Master"
     alsa.togglechannel = args.togglechannel
 
     local format_cmd = string.format("%s get %s", alsa.cmd, alsa.channel)
